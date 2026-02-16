@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>telc B1 Verben mit Präpositionen – Flashcards</title>
+    <style>
+        body {font-family: Arial, sans-serif; background: linear-gradient(135deg, #667eea, #764ba2); display:flex; justify-content:center; align-items:center; height:100vh; margin:0;}
+        .container {text-align:center;}
+        .card {width:380px; height:240px; perspective:1000px; margin:20px auto; cursor:pointer;}
+        .card-inner {position:relative; width:100%; height:100%; transition: transform 0.6s; transform-style:preserve-3d;}
+        .card.flipped .card-inner {transform: rotateY(180deg);}        
+        .card-front, .card-back {position:absolute; width:100%; height:100%; backface-visibility:hidden; background:white; border-radius:15px; display:flex; justify-content:center; align-items:center; font-size:20px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.25);}        
+        .card-back {transform: rotateY(180deg); background:#f1f3f5;}
+        button {padding:10px 18px; margin:8px; border:none; border-radius:8px; cursor:pointer; font-size:15px;}
+        .counter {color:white; margin-top:10px;}
+    </style>
+</head>
+<body>
+<div class="container">
+<h2 style="color:white;">telc B1 – Verben mit Präpositionen</h2>
+
+<div class="card" onclick="flipCard()">
+  <div class="card-inner" id="cardInner">
+    <div class="card-front" id="cardFront"></div>
+    <div class="card-back" id="cardBack"></div>
+  </div>
+</div>
+
+<div>
+  <button onclick="prevCard()">⬅ Zurück</button>
+  <button onclick="nextCard()">Weiter ➡</button>
+  <button onclick="shuffleCards()">🔀 Shuffle</button>
+</div>
+
+<div class="counter" id="counter"></div>
+</div>
+
+<script>
+const flashcards = [
+{"front":"abhängen","back":"von + Dativ"},
+{"front":"achten","back":"auf + Akkusativ"},
+{"front":"anfangen","back":"mit + Dativ"},
+{"front":"ankommen","back":"auf + Akkusativ"},
+{"front":"antworten","back":"auf + Akkusativ"},
+{"front":"sich ärgern","back":"über + Akkusativ"},
+{"front":"aufhören","back":"mit + Dativ"},
+{"front":"aufpassen","back":"auf + Akkusativ"},
+{"front":"sich aufregen","back":"über + Akkusativ"},
+{"front":"ausgeben","back":"für + Akkusativ"},
+{"front":"sich bedanken (Person)","back":"bei + Dativ"},
+{"front":"sich bedanken (Sache)","back":"für + Akkusativ"},
+{"front":"beginnen","back":"mit + Dativ"},
+{"front":"sich bemühen","back":"um + Akkusativ"},
+{"front":"berichten","back":"über + Akkusativ"},
+{"front":"sich beschäftigen","back":"mit + Dativ"},
+{"front":"sich beschweren","back":"bei + Dativ"},
+{"front":"bestehen","back":"aus + Dativ"},
+{"front":"bestehen","back":"auf + Akkusativ"},
+{"front":"sich beteiligen","back":"an + Dativ"},
+{"front":"sich bewerben (Firma)","back":"bei + Dativ"},
+{"front":"sich bewerben (Stelle)","back":"um + Akkusativ"},
+{"front":"sich beziehen","back":"auf + Akkusativ"},
+{"front":"bitten","back":"um + Akkusativ"},
+{"front":"danken","back":"für + Akkusativ"},
+{"front":"denken","back":"an + Akkusativ"},
+{"front":"diskutieren","back":"über + Akkusativ"},
+{"front":"einladen","back":"zu + Dativ"},
+{"front":"sich entscheiden","back":"für + Akkusativ"},
+{"front":"sich entschließen","back":"zu + Dativ"},
+{"front":"sich entschuldigen (Person)","back":"bei + Dativ"},
+{"front":"sich entschuldigen (Sache)","back":"für + Akkusativ"},
+{"front":"erfahren","back":"von + Dativ"},
+{"front":"sich erholen","back":"von + Dativ"},
+{"front":"sich erinnern","back":"an + Akkusativ"},
+{"front":"erkennen","back":"an + Dativ"},
+{"front":"sich erkundigen","back":"nach + Dativ"},
+{"front":"erschrecken","back":"über + Akkusativ"},
+{"front":"erzählen","back":"über + Akkusativ"},
+{"front":"erzählen","back":"von + Dativ"},
+{"front":"fragen","back":"nach + Dativ"},
+{"front":"sich freuen (Zukunft)","back":"auf + Akkusativ"},
+{"front":"sich freuen (Vergangenheit)","back":"über + Akkusativ"},
+{"front":"gehen","back":"um + Akkusativ"},
+{"front":"gehören","back":"zu + Dativ"},
+{"front":"sich gewöhnen","back":"an + Akkusativ"},
+{"front":"glauben","back":"an + Akkusativ"},
+{"front":"gratulieren","back":"zu + Dativ"},
+{"front":"halten","back":"für + Akkusativ"},
+{"front":"halten","back":"von + Dativ"},
+{"front":"sich handeln","back":"um + Akkusativ"},
+{"front":"handeln","back":"von + Dativ"},
+{"front":"helfen","back":"bei + Dativ"},
+{"front":"hindern","back":"an + Dativ"},
+{"front":"hoffen","back":"auf + Akkusativ"},
+{"front":"hören","back":"von + Dativ"},
+{"front":"sich informieren","back":"über + Akkusativ"},
+{"front":"sich interessieren","back":"für + Akkusativ"},
+{"front":"klagen","back":"über + Akkusativ"},
+{"front":"kämpfen","back":"für + Akkusativ"},
+{"front":"kommen","back":"zu + Dativ"},
+{"front":"sich konzentrieren","back":"auf + Akkusativ"},
+{"front":"sich kümmern","back":"um + Akkusativ"},
+{"front":"lachen","back":"über + Akkusativ"},
+{"front":"leiden","back":"an + Dativ"},
+{"front":"leiden","back":"unter + Akkusativ"},
+{"front":"nachdenken","back":"über + Akkusativ"},
+{"front":"protestieren","back":"gegen + Akkusativ"},
+{"front":"rechnen","back":"mit + Dativ"},
+{"front":"reden","back":"über + Akkusativ"},
+{"front":"reden","back":"von + Dativ"},
+{"front":"riechen","back":"nach + Dativ"},
+{"front":"sagen","back":"über + Akkusativ"},
+{"front":"sagen","back":"zu + Dativ"},
+{"front":"schicken","back":"an + Akkusativ"},
+{"front":"schicken","back":"zu + Dativ"},
+{"front":"schimpfen","back":"über + Akkusativ"},
+{"front":"schmecken","back":"nach + Dativ"},
+{"front":"schreiben","back":"an + Akkusativ"},
+{"front":"sich schützen","back":"vor + Dativ"},
+{"front":"sein","back":"für + Akkusativ"},
+{"front":"sein","back":"gegen + Akkusativ"},
+{"front":"sorgen","back":"für + Akkusativ"},
+{"front":"sprechen","back":"mit + Dativ"},
+{"front":"sprechen","back":"über + Akkusativ"},
+{"front":"sterben","back":"an + Dativ"},
+{"front":"streiten","back":"mit + Dativ"},
+{"front":"streiten","back":"über + Akkusativ"},
+{"front":"teilnehmen","back":"an + Dativ"},
+{"front":"telefonieren","back":"mit + Dativ"},
+{"front":"sich treffen","back":"mit + Dativ"},
+{"front":"sich treffen","back":"zu + Dativ"},
+{"front":"überreden","back":"zu + Dativ"},
+{"front":"sich unterhalten","back":"mit + Dativ"},
+{"front":"sich unterhalten","back":"über + Akkusativ"},
+{"front":"sich verabreden","back":"mit + Dativ"},
+{"front":"sich verabschieden","back":"von + Dativ"},
+{"front":"vergleichen","back":"mit + Dativ"},
+{"front":"sich verlassen","back":"auf + Akkusativ"},
+{"front":"sich verlieben","back":"in + Akkusativ"},
+{"front":"sich verstehen","back":"mit + Dativ"},
+{"front":"verstehen","back":"von + Dativ"},
+{"front":"sich vorbereiten","back":"auf + Akkusativ"},
+{"front":"warnen","back":"vor + Dativ"},
+{"front":"warten","back":"auf + Akkusativ"},
+{"front":"sich wenden","back":"an + Akkusativ"},
+{"front":"werden","back":"zu + Dativ"},
+{"front":"wissen","back":"von + Dativ"},
+{"front":"sich wundern","back":"über + Akkusativ"},
+{"front":"zuschauen","back":"bei + Dativ"},
+{"front":"zusehen","back":"bei + Dativ"},
+{"front":"zweifeln","back":"an + Dativ"}
+];
+
+let currentIndex = 0;
+const cardFront = document.getElementById("cardFront");
+const cardBack = document.getElementById("cardBack");
+const card = document.querySelector(".card");
+const counter = document.getElementById("counter");
+
+function updateCard(){
+cardFront.textContent = flashcards[currentIndex].front;
+cardBack.textContent = flashcards[currentIndex].back;
+card.classList.remove("flipped");
+counter.textContent = `Karte ${currentIndex+1} von ${flashcards.length}`;
+}
+
+function flipCard(){card.classList.toggle("flipped");}
+function nextCard(){currentIndex=(currentIndex+1)%flashcards.length;updateCard();}
+function prevCard(){currentIndex=(currentIndex-1+flashcards.length)%flashcards.length;updateCard();}
+function shuffleCards(){flashcards.sort(()=>Math.random()-0.5);currentIndex=0;updateCard();}
+
+updateCard();
+</script>
+</body>
+</html>
