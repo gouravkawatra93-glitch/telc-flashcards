@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>telc B1 Verben mit Präpositionen – Flashcards</title>
-    <style>
-        body {font-family: Arial, sans-serif; background: linear-gradient(135deg, #667eea, #764ba2); display:flex; justify-content:center; align-items:center; height:100vh; margin:0;}
-        .container {text-align:center;}
-        .card {width:380px; height:240px; perspective:1000px; margin:20px auto; cursor:pointer;}
-        .card-inner {position:relative; width:100%; height:100%; transition: transform 0.6s; transform-style:preserve-3d;}
-        .card.flipped .card-inner {transform: rotateY(180deg);}        
-        .card-front, .card-back {position:absolute; width:100%; height:100%; backface-visibility:hidden; background:white; border-radius:15px; display:flex; justify-content:center; align-items:center; font-size:20px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.25);}        
-        .card-back {transform: rotateY(180deg); background:#f1f3f5;}
-        button {padding:10px 18px; margin:8px; border:none; border-radius:8px; cursor:pointer; font-size:15px;}
-        .counter {color:white; margin-top:10px;}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>telc B1 Verben mit Präpositionen – Smart Flashcards</title>
+<style>
+body {font-family: Arial, sans-serif; background: linear-gradient(135deg,#667eea,#764ba2); display:flex; justify-content:center; align-items:center; height:100vh; margin:0;}
+.container {text-align:center; width:95%; max-width:500px;}
+.card {width:100%; height:420px; perspective:1000px; margin:20px auto; cursor:pointer;}
+.card-inner {position:relative; width:100%; height:100%; transition: transform 0.6s; transform-style:preserve-3d;}
+.card.flipped .card-inner {transform: rotateY(180deg);}        
+.card-front, .card-back {position:absolute; width:100%; height:100%; backface-visibility:hidden; background:white; border-radius:15px; display:flex; flex-direction:column; justify-content:center; align-items:center; font-size:20px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.25);}        
+.card-back {transform: rotateY(180deg); background:#f1f3f5;}
+img {max-width:100%; height:180px; object-fit:cover; border-radius:10px; margin:15px 0;}
+button {padding:10px 18px; margin:8px; border:none; border-radius:8px; cursor:pointer; font-size:14px;}
+.counter {color:white; margin-top:10px;}
+.example {margin-top:10px; font-style:italic; font-size:15px;}
+.prep {font-weight:bold; margin-top:10px; font-size:16px;}
+</style>
 </head>
 <body>
 <div class="container">
-<h2 style="color:white;">telc B1 – Verben mit Präpositionen</h2>
+<h2 style="color:white;">telc B1 – Smart Flashcards</h2>
 
 <div class="card" onclick="flipCard()">
-  <div class="card-inner" id="cardInner">
+  <div class="card-inner">
     <div class="card-front" id="cardFront"></div>
     <div class="card-back" id="cardBack"></div>
   </div>
@@ -37,119 +40,120 @@
 </div>
 
 <script>
+
 const flashcards = [
-{"front":"abhängen","back":"von + Dativ"},
-{"front":"achten","back":"auf + Akkusativ"},
-{"front":"anfangen","back":"mit + Dativ"},
-{"front":"ankommen","back":"auf + Akkusativ"},
-{"front":"antworten","back":"auf + Akkusativ"},
-{"front":"sich ärgern","back":"über + Akkusativ"},
-{"front":"aufhören","back":"mit + Dativ"},
-{"front":"aufpassen","back":"auf + Akkusativ"},
-{"front":"sich aufregen","back":"über + Akkusativ"},
-{"front":"ausgeben","back":"für + Akkusativ"},
-{"front":"sich bedanken (Person)","back":"bei + Dativ"},
-{"front":"sich bedanken (Sache)","back":"für + Akkusativ"},
-{"front":"beginnen","back":"mit + Dativ"},
-{"front":"sich bemühen","back":"um + Akkusativ"},
-{"front":"berichten","back":"über + Akkusativ"},
-{"front":"sich beschäftigen","back":"mit + Dativ"},
-{"front":"sich beschweren","back":"bei + Dativ"},
-{"front":"bestehen","back":"aus + Dativ"},
-{"front":"bestehen","back":"auf + Akkusativ"},
-{"front":"sich beteiligen","back":"an + Dativ"},
-{"front":"sich bewerben (Firma)","back":"bei + Dativ"},
-{"front":"sich bewerben (Stelle)","back":"um + Akkusativ"},
-{"front":"sich beziehen","back":"auf + Akkusativ"},
-{"front":"bitten","back":"um + Akkusativ"},
-{"front":"danken","back":"für + Akkusativ"},
-{"front":"denken","back":"an + Akkusativ"},
-{"front":"diskutieren","back":"über + Akkusativ"},
-{"front":"einladen","back":"zu + Dativ"},
-{"front":"sich entscheiden","back":"für + Akkusativ"},
-{"front":"sich entschließen","back":"zu + Dativ"},
-{"front":"sich entschuldigen (Person)","back":"bei + Dativ"},
-{"front":"sich entschuldigen (Sache)","back":"für + Akkusativ"},
-{"front":"erfahren","back":"von + Dativ"},
-{"front":"sich erholen","back":"von + Dativ"},
-{"front":"sich erinnern","back":"an + Akkusativ"},
-{"front":"erkennen","back":"an + Dativ"},
-{"front":"sich erkundigen","back":"nach + Dativ"},
-{"front":"erschrecken","back":"über + Akkusativ"},
-{"front":"erzählen","back":"über + Akkusativ"},
-{"front":"erzählen","back":"von + Dativ"},
-{"front":"fragen","back":"nach + Dativ"},
-{"front":"sich freuen (Zukunft)","back":"auf + Akkusativ"},
-{"front":"sich freuen (Vergangenheit)","back":"über + Akkusativ"},
-{"front":"gehen","back":"um + Akkusativ"},
-{"front":"gehören","back":"zu + Dativ"},
-{"front":"sich gewöhnen","back":"an + Akkusativ"},
-{"front":"glauben","back":"an + Akkusativ"},
-{"front":"gratulieren","back":"zu + Dativ"},
-{"front":"halten","back":"für + Akkusativ"},
-{"front":"halten","back":"von + Dativ"},
-{"front":"sich handeln","back":"um + Akkusativ"},
-{"front":"handeln","back":"von + Dativ"},
-{"front":"helfen","back":"bei + Dativ"},
-{"front":"hindern","back":"an + Dativ"},
-{"front":"hoffen","back":"auf + Akkusativ"},
-{"front":"hören","back":"von + Dativ"},
-{"front":"sich informieren","back":"über + Akkusativ"},
-{"front":"sich interessieren","back":"für + Akkusativ"},
-{"front":"klagen","back":"über + Akkusativ"},
-{"front":"kämpfen","back":"für + Akkusativ"},
-{"front":"kommen","back":"zu + Dativ"},
-{"front":"sich konzentrieren","back":"auf + Akkusativ"},
-{"front":"sich kümmern","back":"um + Akkusativ"},
-{"front":"lachen","back":"über + Akkusativ"},
-{"front":"leiden","back":"an + Dativ"},
-{"front":"leiden","back":"unter + Akkusativ"},
-{"front":"nachdenken","back":"über + Akkusativ"},
-{"front":"protestieren","back":"gegen + Akkusativ"},
-{"front":"rechnen","back":"mit + Dativ"},
-{"front":"reden","back":"über + Akkusativ"},
-{"front":"reden","back":"von + Dativ"},
-{"front":"riechen","back":"nach + Dativ"},
-{"front":"sagen","back":"über + Akkusativ"},
-{"front":"sagen","back":"zu + Dativ"},
-{"front":"schicken","back":"an + Akkusativ"},
-{"front":"schicken","back":"zu + Dativ"},
-{"front":"schimpfen","back":"über + Akkusativ"},
-{"front":"schmecken","back":"nach + Dativ"},
-{"front":"schreiben","back":"an + Akkusativ"},
-{"front":"sich schützen","back":"vor + Dativ"},
-{"front":"sein","back":"für + Akkusativ"},
-{"front":"sein","back":"gegen + Akkusativ"},
-{"front":"sorgen","back":"für + Akkusativ"},
-{"front":"sprechen","back":"mit + Dativ"},
-{"front":"sprechen","back":"über + Akkusativ"},
-{"front":"sterben","back":"an + Dativ"},
-{"front":"streiten","back":"mit + Dativ"},
-{"front":"streiten","back":"über + Akkusativ"},
-{"front":"teilnehmen","back":"an + Dativ"},
-{"front":"telefonieren","back":"mit + Dativ"},
-{"front":"sich treffen","back":"mit + Dativ"},
-{"front":"sich treffen","back":"zu + Dativ"},
-{"front":"überreden","back":"zu + Dativ"},
-{"front":"sich unterhalten","back":"mit + Dativ"},
-{"front":"sich unterhalten","back":"über + Akkusativ"},
-{"front":"sich verabreden","back":"mit + Dativ"},
-{"front":"sich verabschieden","back":"von + Dativ"},
-{"front":"vergleichen","back":"mit + Dativ"},
-{"front":"sich verlassen","back":"auf + Akkusativ"},
-{"front":"sich verlieben","back":"in + Akkusativ"},
-{"front":"sich verstehen","back":"mit + Dativ"},
-{"front":"verstehen","back":"von + Dativ"},
-{"front":"sich vorbereiten","back":"auf + Akkusativ"},
-{"front":"warnen","back":"vor + Dativ"},
-{"front":"warten","back":"auf + Akkusativ"},
-{"front":"sich wenden","back":"an + Akkusativ"},
-{"front":"werden","back":"zu + Dativ"},
-{"front":"wissen","back":"von + Dativ"},
-{"front":"sich wundern","back":"über + Akkusativ"},
-{"front":"zuschauen","back":"bei + Dativ"},
-{"front":"zusehen","back":"bei + Dativ"},
-{"front":"zweifeln","back":"an + Dativ"}
+{verb:"abhängen",preposition:"von + Dativ",example:"Ob wir fahren, hängt vom Wetter ab.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"achten",preposition:"auf + Akkusativ",example:"Bitte achte auf den neuen Mantel.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"anfangen",preposition:"mit + Dativ",example:"Ich fange mit der Übung an.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"ankommen",preposition:"auf + Akkusativ",example:"Es kommt auf den richtigen Preis an.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"antworten",preposition:"auf + Akkusativ",example:"Bitte antworten Sie heute auf den Brief.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich ärgern",preposition:"über + Akkusativ",example:"Wir ärgern uns über den Regen.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"aufhören",preposition:"mit + Dativ",example:"Er hört um 17 Uhr mit der Arbeit auf.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"aufpassen",preposition:"auf + Akkusativ",example:"Ein Babysitter passt auf kleine Kinder auf.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich aufregen",preposition:"über + Akkusativ",example:"Deutsche regen sich über Unpünktlichkeit auf.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"ausgeben",preposition:"für + Akkusativ",example:"Frauen geben viel Geld für Schuhe aus.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich bedanken (bei)",preposition:"bei + Dativ",example:"Ich bedanke mich bei dir.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich bedanken (für)",preposition:"für + Akkusativ",example:"Er bedankt sich für das Geschenk.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"beginnen",preposition:"mit + Dativ",example:"Wir beginnen mit dem Deutschkurs.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich bemühen",preposition:"um + Akkusativ",example:"Sie bemüht sich um eine Arbeit.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"berichten",preposition:"über + Akkusativ",example:"Der Reporter berichtet über die Wahlen.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich beschäftigen",preposition:"mit + Dativ",example:"Ich beschäftige mich mit Pflanzen.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich beschweren",preposition:"bei + Dativ",example:"Der Gast beschwert sich beim Kellner.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"bestehen (aus)",preposition:"aus + Dativ",example:"Eheringe bestehen aus Gold.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"bestehen (auf)",preposition:"auf + Akkusativ",example:"Ich bestehe auf sofortige Bezahlung.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich beteiligen",preposition:"an + Dativ",example:"Viele Studenten beteiligen sich an den Streiks.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich bewerben (bei)",preposition:"bei + Dativ",example:"Er bewirbt sich bei einer Firma.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich bewerben (um)",preposition:"um + Akkusativ",example:"Sie bewirbt sich um eine Stelle.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich beziehen",preposition:"auf + Akkusativ",example:"Meine Frage bezieht sich auf Ihr Angebot.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"bitten",preposition:"um + Akkusativ",example:"Er bittet um Aufmerksamkeit.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"danken",preposition:"für + Akkusativ",example:"Er dankt für die Hilfe.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"denken",preposition:"an + Akkusativ",example:"Maria denkt an den Urlaub.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"diskutieren",preposition:"über + Akkusativ",example:"Sie diskutieren über eine neue Steuer.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"einladen",preposition:"zu + Dativ",example:"Ich lade dich zu meinem Geburtstag ein.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich entscheiden",preposition:"für + Akkusativ",example:"Sie entscheidet sich für Gold.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich entschließen",preposition:"zu + Dativ",example:"Er entschließt sich zu einem Studium.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich entschuldigen (bei)",preposition:"bei + Dativ",example:"Sie entschuldigt sich bei ihrem Mann.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich entschuldigen (für)",preposition:"für + Akkusativ",example:"Ich entschuldige mich für mein Verhalten.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"erfahren",preposition:"von + Dativ",example:"Wir haben von dem Projekt erfahren.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich erholen",preposition:"von + Dativ",example:"Ich erhole mich von dem Schock.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich erinnern",preposition:"an + Akkusativ",example:"Wir erinnern uns an unser erstes Jahr.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"erkennen",preposition:"an + Dativ",example:"Man erkennt ihn an seiner Stimme.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich erkundigen",preposition:"nach + Dativ",example:"Sie erkundigt sich nach meinen Plänen.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"erschrecken",preposition:"über + Akkusativ",example:"Sie erschrickt über eine Maus.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"erzählen (über)",preposition:"über + Akkusativ",example:"Er erzählt über sein Leben.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"erzählen (von)",preposition:"von + Dativ",example:"Er erzählt von der Reise.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"fragen",preposition:"nach + Dativ",example:"Sie fragt nach den Konsequenzen.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich freuen (auf)",preposition:"auf + Akkusativ",example:"Kinder freuen sich auf Weihnachten.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich freuen (über)",preposition:"über + Akkusativ",example:"Er freut sich über eine Gehaltserhöhung.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"gehen",preposition:"um + Akkusativ",example:"Es geht um Geld.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"gehören",preposition:"zu + Dativ",example:"Das gehört zu Frankreich.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich gewöhnen",preposition:"an + Akkusativ",example:"Ich gewöhne mich an den Euro.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"glauben",preposition:"an + Akkusativ",example:"Er glaubt an die Liebe.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"gratulieren",preposition:"zu + Dativ",example:"Wir gratulieren dir zum Geburtstag.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"halten (für)",preposition:"für + Akkusativ",example:"Ich halte das für eine gute Idee.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"halten (von)",preposition:"von + Dativ",example:"Was hältst du von Ordnung?",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich handeln",preposition:"um + Akkusativ",example:"Es handelt sich um ein Problem.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"handeln",preposition:"von + Dativ",example:"Das Märchen handelt von Gut und Böse.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"helfen",preposition:"bei + Dativ",example:"Kann ich dir beim Tischdecken helfen?",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"hindern",preposition:"an + Dativ",example:"Er hindert sie am Überholen.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"hoffen",preposition:"auf + Akkusativ",example:"Wir hoffen auf warmes Wetter.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"hören",preposition:"von + Dativ",example:"Ich habe von ihm gehört.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich informieren",preposition:"über + Akkusativ",example:"Ich informiere mich über die Technologie.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich interessieren",preposition:"für + Akkusativ",example:"Sie interessiert sich für ein Smartphone.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"klagen",preposition:"über + Akkusativ",example:"Sie klagt über Kopfschmerzen.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"kämpfen",preposition:"für + Akkusativ",example:"Sie kämpfen für höhere Löhne.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"kommen",preposition:"zu + Dativ",example:"Es kam zu einem Streit.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich konzentrieren",preposition:"auf + Akkusativ",example:"Er konzentriert sich auf die Hausaufgaben.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"sich kümmern",preposition:"um + Akkusativ",example:"Man kümmert sich um alte Leute.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"lachen",preposition:"über + Akkusativ",example:"Wir lachen über den Witz.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"leiden (an)",preposition:"an + Dativ",example:"Er leidet an Burn-out.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"leiden (unter)",preposition:"unter + Akkusativ",example:"Sie leidet unter Schlafproblemen.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"nachdenken",preposition:"über + Akkusativ",example:"Er denkt über seine Rente nach.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"protestieren",preposition:"gegen + Akkusativ",example:"Viele protestieren gegen Atomkraft.",image:"https://source.unsplash.com/400x300/?german,learning"},
+{verb:"rechnen",preposition:"mit + Dativ",example:"Wir rechnen mit Schnee.",},
+{verb:"reden (über)",preposition:"über + Akkusativ",example:"Sie redet über Krankheiten.",image:"https://source.unsplash.com/400x300/?talk"},
+{verb:"reden (von)",preposition:"von + Dativ",example:"Er redet von alten Zeiten.",image:"https://source.unsplash.com/400x300/?conversation"},
+{verb:"riechen",preposition:"nach + Dativ",example:"Hier riecht es nach Kuchen.",image:"https://source.unsplash.com/400x300/?cake"},
+{verb:"sagen (über)",preposition:"über + Akkusativ",example:"Sie sagt etwas über ihn.",image:"https://source.unsplash.com/400x300/?speech"},
+{verb:"sagen (zu)",preposition:"zu + Dativ",example:"Was sagst du zu meinem Haarschnitt?",image:"https://source.unsplash.com/400x300/?haircut"},
+{verb:"schicken (an)",preposition:"an + Akkusativ",example:"Ich schicke die E-Mail an dich.",image:"https://source.unsplash.com/400x300/?email"},
+{verb:"schicken (zu)",preposition:"zu + Dativ",example:"Der Arzt schickt ihn zu einem Spezialisten.",image:"https://source.unsplash.com/400x300/?doctor"},
+{verb:"schimpfen",preposition:"über + Akkusativ",example:"Alle schimpfen über den Regen.",image:"https://source.unsplash.com/400x300/?complain"},
+{verb:"schmecken",preposition:"nach + Dativ",example:"Es schmeckt nach Meerwasser.",image:"https://source.unsplash.com/400x300/?food"},
+{verb:"schreiben",preposition:"an + Akkusativ",example:"Bitte schreibe an deine Mutter.",image:"https://source.unsplash.com/400x300/?writing"},
+{verb:"sich schützen",preposition:"vor + Dativ",example:"Man schützt sich vor Hackern.",image:"https://source.unsplash.com/400x300/?security"},
+{verb:"sein (für)",preposition:"für + Akkusativ",example:"Ich bin für die Abschaffung.",image:"https://source.unsplash.com/400x300/?support"},
+{verb:"sein (gegen)",preposition:"gegen + Akkusativ",example:"Viele sind gegen Steuererhöhungen.",image:"https://source.unsplash.com/400x300/?against"},
+{verb:"sorgen",preposition:"für + Akkusativ",example:"Kinder sorgen für ihre Eltern.",image:"https://source.unsplash.com/400x300/?family"},
+{verb:"sprechen (mit)",preposition:"mit + Dativ",example:"Ich spreche mit deinem Vater.",image:"https://source.unsplash.com/400x300/?conversation"},
+{verb:"sprechen (über)",preposition:"über + Akkusativ",example:"Wir sprechen über deine Zukunft.",image:"https://source.unsplash.com/400x300/?discussion"},
+{verb:"sterben",preposition:"an + Dativ",example:"Er ist an der Grippe gestorben.",image:"https://source.unsplash.com/400x300/?hospital"},
+{verb:"streiten (mit)",preposition:"mit + Dativ",example:"Ich streite mit dir.",image:"https://source.unsplash.com/400x300/?argument"},
+{verb:"streiten (über)",preposition:"über + Akkusativ",example:"Sie streiten über eine Strategie.",image:"https://source.unsplash.com/400x300/?debate"},
+{verb:"teilnehmen",preposition:"an + Dativ",example:"Er nimmt an der WM teil.",image:"https://source.unsplash.com/400x300/?meeting"},
+{verb:"telefonieren",preposition:"mit + Dativ",example:"Hast du mit dem Arzt telefoniert?",image:"https://source.unsplash.com/400x300/?phone"},
+{verb:"sich treffen (mit)",preposition:"mit + Dativ",example:"Sie trifft sich mit ihrem Freund.",image:"https://source.unsplash.com/400x300/?friends"},
+{verb:"sich treffen (zu)",preposition:"zu + Dativ",example:"Sie treffen sich zu einem Gespräch.",image:"https://source.unsplash.com/400x300/?meeting"},
+{verb:"überreden",preposition:"zu + Dativ",example:"Ich überrede dich zu einem Glas Wein.",image:"https://source.unsplash.com/400x300/?wine"},
+{verb:"sich unterhalten (mit)",preposition:"mit + Dativ",example:"Er unterhält sich mit dem Bassisten.",image:"https://source.unsplash.com/400x300/?music"},
+{verb:"sich unterhalten (über)",preposition:"über + Akkusativ",example:"Sie unterhalten sich über Trends.",image:"https://source.unsplash.com/400x300/?fashion"},
+{verb:"sich verabreden",preposition:"mit + Dativ",example:"Ich verabrede mich mit einer Freundin.",image:"https://source.unsplash.com/400x300/?appointment"},
+{verb:"sich verabschieden",preposition:"von + Dativ",example:"Wir verabschieden uns von euch.",image:"https://source.unsplash.com/400x300/?goodbye"},
+{verb:"vergleichen",preposition:"mit + Dativ",example:"Vergleichen Sie München mit Berlin.",image:"https://source.unsplash.com/400x300/?compare"},
+{verb:"sich verlassen",preposition:"auf + Akkusativ",example:"Auf mich kann man sich verlassen.",image:"https://source.unsplash.com/400x300/?trust"},
+{verb:"sich verlieben",preposition:"in + Akkusativ",example:"Sie hat sich in das Haus verliebt.",image:"https://source.unsplash.com/400x300/?house"},
+{verb:"sich verstehen",preposition:"mit + Dativ",example:"Er versteht sich gut mit seinem Chef.",image:"https://source.unsplash.com/400x300/?team"},
+{verb:"verstehen",preposition:"von + Dativ",example:"Verstehst du etwas von Elektrik?",image:"https://source.unsplash.com/400x300/?electricity"},
+{verb:"sich vorbereiten",preposition:"auf + Akkusativ",example:"Er bereitet sich auf eine Präsentation vor.",image:"https://source.unsplash.com/400x300/?presentation"},
+{verb:"warnen",preposition:"vor + Dativ",example:"Man warnte ihn vor hohen Kosten.",image:"https://source.unsplash.com/400x300/?warning"},
+{verb:"warten",preposition:"auf + Akkusativ",example:"Man wartet auf einen Bus.",image:"https://source.unsplash.com/400x300/?bus"},
+{verb:"sich wenden",preposition:"an + Akkusativ",example:"Wenden Sie sich an die Buchhaltung.",image:"https://source.unsplash.com/400x300/?office"},
+{verb:"werden",preposition:"zu + Dativ",example:"Eis wird zu Wasser.",image:"https://source.unsplash.com/400x300/?ice"},
+{verb:"wissen",preposition:"von + Dativ",example:"Ich weiß nichts von neuen Computern.",image:"https://source.unsplash.com/400x300/?computer"},
+{verb:"sich wundern",preposition:"über + Akkusativ",example:"Viele wundern sich über hohe Stromkosten.",image:"https://source.unsplash.com/400x300/?surprised"},
+{verb:"zuschauen",preposition:"bei + Dativ",example:"Ich schaue dir bei der Reparatur zu.",image:"https://source.unsplash.com/400x300/?repair"},
+{verb:"zusehen",preposition:"bei + Dativ",example:"Willst du mir beim Kochen zusehen?",image:"https://source.unsplash.com/400x300/?cooking"},
+{verb:"zweifeln",preposition:"an + Dativ",example:"Er zweifelt an der Wahrheit.",image:"https://source.unsplash.com/400x300/?doubt"}
 ];
 
 let currentIndex = 0;
@@ -159,8 +163,20 @@ const card = document.querySelector(".card");
 const counter = document.getElementById("counter");
 
 function updateCard(){
-cardFront.textContent = flashcards[currentIndex].front;
-cardBack.textContent = flashcards[currentIndex].back;
+
+// FRONT → Only Verb
+cardFront.innerHTML = `
+<h2>${flashcards[currentIndex].verb}</h2>
+<p style="font-size:14px;color:gray;">Click to reveal</p>
+`;
+
+// BACK → Photo + Preposition + Case + Example
+cardBack.innerHTML = `
+<img src="${flashcards[currentIndex].image}" alt="visual">
+<p class="prep">${flashcards[currentIndex].preposition}</p>
+<p class="example">${flashcards[currentIndex].example}</p>
+`;
+
 card.classList.remove("flipped");
 counter.textContent = `Karte ${currentIndex+1} von ${flashcards.length}`;
 }
@@ -171,6 +187,7 @@ function prevCard(){currentIndex=(currentIndex-1+flashcards.length)%flashcards.l
 function shuffleCards(){flashcards.sort(()=>Math.random()-0.5);currentIndex=0;updateCard();}
 
 updateCard();
+
 </script>
 </body>
 </html>
